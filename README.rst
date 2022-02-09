@@ -11,6 +11,6 @@
 
 .. code-block:: sh
 
-    docker rmi   cudagl:ros-melodic
+    docker rmi   cudagl:ros-galactic
 
-    docker build -t cudagl:ros-melodic .
+    docker build -t cudagl:ros-galactic .
