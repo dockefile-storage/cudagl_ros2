@@ -2,6 +2,7 @@ FROM nvidia/cudagl:11.1.1-devel-ubuntu20.04
 
 LABEL Jiangxumin <cjiangxumin@gmail.com>
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ## Install APT packages
 # hadolint ignore=DL3008
