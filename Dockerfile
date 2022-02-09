@@ -20,18 +20,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg \
   && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null \
   && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-vcstool \
-  && apt-get clean \
+     gnupg2 \
+     libpython3-dev \
+     python3-pip \
+     python3-rosdep \ 
+     ros-galactic-desktop \
+  &   & apt-get clean \
   && rm -rf /var/lib/apt/lists/*
-
-RUN  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      curl \
-      gnupg2 \
-      lsb-release  \
-      libpython3-dev python3-pip \
-      python3-rosdep \ 
-      ros-galactic-desktop \
-      && apt-get clean \
-      && rm -rf /var/lib/apt/lists/*
 
 # sudo apt update && sudo apt install curl gnupg lsb-release
 # sudo rosdep init
