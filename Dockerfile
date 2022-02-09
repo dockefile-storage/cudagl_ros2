@@ -103,6 +103,7 @@ RUN curl -sLO  https://developer.download.nvidia.com/compute/machine-learning/re
 # RUN  bash  /root/shell/eigen_instal.sh
 # RUN  bash  /root/shell/depends.sh
 
+
 USER docker
 WORKDIR /home/docker
 COPY .bash_aliases  .bash_aliases
