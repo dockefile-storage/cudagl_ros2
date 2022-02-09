@@ -26,6 +26,7 @@ RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o
      python3-pip \
      python3-rosdep \ 
      ros-galactic-desktop \
+     ros-galactic-rmw-cyclonedds-cpp \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -69,9 +70,6 @@ RUN echo "docker ALL=(ALL) NOPASSWD : ALL" > /etc/sudoers.d/nopasswd4sudo
 RUN source /opt/ros/galactic/setup.bash \
   && rosdep init  \
   && rosdep update 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ros-galactic-rmw-cyclonedds-cpp \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
 
 # COPY shell /root/shell  
 # RUN  bash  /root/shell/ros_instal.sh
