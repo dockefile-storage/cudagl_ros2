@@ -25,7 +25,7 @@ RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o
      python3-pip \
      python3-rosdep \ 
      ros-galactic-desktop \
-  &&  & apt-get clean \
+  && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 # sudo apt update && sudo apt install curl gnupg lsb-release
