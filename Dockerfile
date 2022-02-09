@@ -106,7 +106,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ge
     && geographiclib-get-geoids egm2008-1 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && rm /tmp/geoid-dETkIYR9/egm2008-1.tar.bz2 \
+    && rm -rf /tmp/geoid-* \
     && pip3 install gdown 
 
 ### libtorch
@@ -114,8 +114,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ge
 RUN  gdown https://drive.google.com/u/0/uc?id=1eNh3F3xCQ4AMJEHtwb1dhshSyzWMjoc8 -O /tmp/libtorch.zip \
 && unzip /tmp/libtorch.zip  -d /usr/local/  \
 && rm /tmp/libtorch.zip
-
-
 
 # COPY shell /root/shell  
 # RUN  bash  /root/shell/ros_instal.sh
