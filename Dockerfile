@@ -71,6 +71,10 @@ RUN source /opt/ros/galactic/setup.bash \
   && rosdep init  \
   && rosdep update 
 
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  \
+    libcudnn8=8.0.5.39-1+cuda11.1  \
+    libcudnn8-dev=8.0.5.39-1+cuda11.1
+
 # COPY shell /root/shell  
 # RUN  bash  /root/shell/ros_instal.sh
 # RUN  bash  /root/shell/eigen_instal.sh
