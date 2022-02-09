@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=autoplot_cfg_docker
+GenericName=autoplot_cfg_docker debug
+Comment=autoplot_cfg_docker debug
+Categories=GNOME;AudioVideo;
+
+#Exec=/usr/bin/docker exec -it --user=autoware --workdir=/home/autoware/pm-autopilot-2.0.1/src/autoplot_cfg/ pm-autopilot autoplot_cfg
+Exec=/usr/bin/docker exec -it --user=autoware --workdir=/home/autoware/pm-autopilot-2.0.1/src/autoplot_cfg/  pm-autopilot-dev  python3  main.py
+
+Icon=_HOME_/.local/docker-2.0/img/autoplot_cfg.png
+
+Terminal=true 
+#Terminal=false
+
+Type=Application

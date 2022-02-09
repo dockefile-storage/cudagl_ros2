@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=autoplot_quckstart
+GenericName=autoplot_gui_docker debug
+Comment=autoplot_quckstart debug
+Categories=GNOME;AudioVideo;
+
+#Exec=/usr/bin/docker exec -it --user=autoware --workdir=/home/autoware pm-autopilot  bash -c "source /home/autoware/pm-autopilot-2.0.1/devel/setup.bash; roslaunch autopilot_gui start.launch"
+#Exec=/usr/bin/docker exec -it --user=autoware --workdir=/home/autoware pm-autopilot  bash -c "source /home/autoware/Autoware/install/setup.bash; source /home/autoware/pm-autopilot-2.0.1/devel/setup.bash; roslaunch autopilot_gui start.launch"
+
+Exec=/usr/bin/bash -c "bash _HOME_/.local/docker-2.0/bin/docker_run_once.sh"
+
+#Icon=_HOME_/.local/docker-2.0/img/car.png
+
+Terminal=true 
+#Terminal=false
+
+Type=Application

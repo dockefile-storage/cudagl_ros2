@@ -1,0 +1,11 @@
+PyQtChart==5.10.1
+PyQt5==5.10.1
+numpy==1.18.4
+
+python-can
+python-can-remote
+geographiclib==1.49
+pyserial==3.4
+rospkg==1.2.3
+simple-pid==0.2.4
+cantools==34.0.0
