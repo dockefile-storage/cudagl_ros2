@@ -73,7 +73,7 @@ RUN source /opt/ros/galactic/setup.bash \
 
 ## install cudnn 8.0.5 , TensorRT 7.2.1
 RUN curl -sLO  https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb \
- && DEBIAN_FRONTEND=noninteractive apt-get install nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb  \
+ && DEBIAN_FRONTEND=noninteractive apt-get install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb  \
  && rm nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb \
  && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  \
     libcudnn8=8.0.5.39-1+cuda11.1  \
