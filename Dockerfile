@@ -102,8 +102,10 @@ RUN curl -sLO  https://developer.download.nvidia.com/compute/machine-learning/re
     libnvparsers-dev 
 
 ### geographiclib
-RUN geographiclib-tools \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends geographiclib-tools \
     && geographiclib-get-geoids egm2008-1 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
     && rm /tmp/geoid-dETkIYR9/egm2008-1.tar.bz2 \
     && pip3 install gdown 
 
