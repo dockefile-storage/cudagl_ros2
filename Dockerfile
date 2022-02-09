@@ -25,16 +25,16 @@ RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o
 
 ## Setup build environment in a temporary directory
 # hadolint ignore=DL3003
-RUN --mount=type=ssh \
-  mkdir -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts \
-  && git clone git@github.com:tier4/autoware.proj.git -b main /tmp/autoware.proj \
-  && cd /tmp/autoware.proj \
-  && mkdir src \
-  && vcs import src < autoware.proj.repos \
-  && ./setup_ubuntu20.04.sh -c \
-  && rm -rf /tmp/autoware.proj \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+# RUN --mount=type=ssh \
+#   mkdir -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts \
+#   && git clone git@github.com:tier4/autoware.proj.git -b main /tmp/autoware.proj \
+#   && cd /tmp/autoware.proj \
+#   && mkdir src \
+#   && vcs import src < autoware.proj.repos \
+#   && ./setup_ubuntu20.04.sh -c \
+#   && rm -rf /tmp/autoware.proj \
+#   && apt-get clean \
+#   && rm -rf /var/lib/apt/lists/*
 
 
 USER    root
