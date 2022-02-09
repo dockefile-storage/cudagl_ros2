@@ -71,9 +71,29 @@ RUN source /opt/ros/galactic/setup.bash \
   && rosdep init  \
   && rosdep update 
 
+## install cudnn 8.0.5 , TensorRT 7.2.1
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends  \
     libcudnn8=8.0.5.39-1+cuda11.1  \
-    libcudnn8-dev=8.0.5.39-1+cuda11.1
+    libcudnn8-dev=8.0.5.39-1+cuda11.1 \
+    libnvinfer7=7.2.1-1+cuda11.1 \
+    libnvinfer-dev=7.2.1-1+cuda11.1 \
+    libnvinfer-plugin7=7.2.1-1+cuda11.1 \
+    libnvinfer-plugin-dev=7.2.1-1+cuda11.1 \
+    libnvonnxparsers7=7.2.1-1+cuda11.1 \
+    libnvonnxparsers-dev=7.2.1-1+cuda11.1 \
+    libnvparsers7=7.2.1-1+cuda11.1 \
+    libnvparsers-dev=7.2.1-1+cuda11.1 \
+    && apt-mark hold cuda-11-1 \
+    libcudnn8 \
+    libcudnn8-dev \
+    libnvinfer7 \
+    libnvinfer-dev \
+    libnvinfer-plugin7 \
+    libnvinfer-plugin-dev \
+    libnvonnxparsers7 \
+    libnvonnxparsers-dev \
+    libnvparsers7 \
+    libnvparsers-dev 
 
 # COPY shell /root/shell  
 # RUN  bash  /root/shell/ros_instal.sh
