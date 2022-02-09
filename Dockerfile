@@ -67,10 +67,10 @@ RUN echo "docker ALL=(ALL) NOPASSWD : ALL" > /etc/sudoers.d/nopasswd4sudo
 
 RUN source /opt/ros/galactic/setup.bash \
   && rosdep init  \
-  && rosdep update \
-  && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ros-galactic-rmw-cyclonedds-cpp \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  && rosdep update 
+  # && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ros-galactic-rmw-cyclonedds-cpp \
+  # && apt-get clean \
+  # && rm -rf /var/lib/apt/lists/*
 
 # COPY shell /root/shell  
 # RUN  bash  /root/shell/ros_instal.sh
@@ -79,10 +79,5 @@ RUN source /opt/ros/galactic/setup.bash \
 
 USER docker
 WORKDIR /home/docker
-RUN echo 'source /opt/ros/galactic/setup.bash' > /home/docker/.bash_aliases  \
-    && echo 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' >> /home/docker/.bash_aliases 
-
+COPY .bash_aliases  .bash_aliases
 CMD /bin/bash
-
-#EXPOSE 22
-# CMD ["/root/run.sh"]
