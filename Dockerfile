@@ -86,7 +86,8 @@ RUN curl -sLO  https://developer.download.nvidia.com/compute/machine-learning/re
     libnvonnxparsers-dev=7.2.1-1+cuda11.1 \
     libnvparsers7=7.2.1-1+cuda11.1 \
     libnvparsers-dev=7.2.1-1+cuda11.1 \
-    && apt-mark hold cuda-11-1 \
+    && apt-mark hold nvidia-machine-learning-repo-ubuntu1804 \
+    cuda-11-1 \
     libcudnn8 \
     libcudnn8-dev \
     libnvinfer7 \
