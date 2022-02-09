@@ -9,6 +9,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   ansible \
   curl \
+  unzip \
   git \
   gnupg \
   lsb-release \
@@ -26,6 +27,7 @@ RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o
      python3-pip \
      python3-rosdep \ 
      ros-galactic-desktop \
+     python3-colcon-common-extensions \
      ros-galactic-rmw-cyclonedds-cpp \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
@@ -98,6 +100,20 @@ RUN curl -sLO  https://developer.download.nvidia.com/compute/machine-learning/re
     libnvonnxparsers-dev \
     libnvparsers7 \
     libnvparsers-dev 
+
+### geographiclib
+RUN geographiclib-tools \
+    && geographiclib-get-geoids egm2008-1 \
+    && rm /tmp/geoid-dETkIYR9/egm2008-1.tar.bz2 \
+    && pip3 install gdown 
+
+### libtorch
+# libgomp1
+RUN  gdown https://drive.google.com/u/0/uc?id=1eNh3F3xCQ4AMJEHtwb1dhshSyzWMjoc8 -O /tmp/libtorch.zip \
+&& unzip /tmp/libtorch.zip  -d /usr/local/  \
+&& rm /tmp/libtorch.zip
+
+
 
 # COPY shell /root/shell  
 # RUN  bash  /root/shell/ros_instal.sh
