@@ -23,6 +23,21 @@ RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
+RUN  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+      curl \
+      gnupg2 \
+      lsb-release  \
+      libpython3-dev python3-pip \
+      python3-rosdep \ 
+      ros-galactic-desktop \
+      && apt-get clean \
+      && rm -rf /var/lib/apt/lists/*
+
+# sudo apt update && sudo apt install curl gnupg lsb-release
+# sudo rosdep init
+# rosdep update
+
+
 ## Setup build environment in a temporary directory
 # hadolint ignore=DL3003
 # RUN --mount=type=ssh \
