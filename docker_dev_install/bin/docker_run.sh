@@ -4,9 +4,9 @@ set -e
 
 # Default settings
 CUDA="on"
-IMAGE_NAME="autoware/autoware"
+IMAGE_NAME="ros/galactic"
 TAG_PREFIX="latest"
-ROS_DISTRO="melodic"
+ROS_DISTRO="galactic"
 BASE_ONLY="false"
 PRE_RELEASE="off"
 AUTOWARE_HOST_DIR=""
@@ -119,24 +119,32 @@ echo -e "\tUID: <$USER_ID>"
 SUFFIX=""
 RUNTIME=""
 
+
+DOCKER_HOME=/home/promote
+
 XSOCK=/tmp/.X11-unix
+
 XAUTH=$HOME/.Xauthority
+DOCKER_XAUTH=$DOCKER_HOME/.Xauthority
+
 FONTS=/usr/share/fonts # 字体问题
-HOST_CONFIG=$HOME/.config
-DOCKER_CONFIG=/home/autoware/.config
 
+# HOST_CONFIG=$HOME/.config
+# DOCKER_CONFIG=$DOCKER_HOME/.config
 
-SHARED_DOCKER_DIR=/home/autoware/shared_dir
 SHARED_HOST_DIR=$HOME/shared_dir
+SHARED_DOCKER_DIR=$DOCKER_HOME/shared_dir
+
 # SHARED_HOST_DIR=$HOME
 
-AUTOWARE_DOCKER_DIR=/home/autoware/Autoware
+AUTOWARE_DOCKER_DIR=/home/docker/Autoware
 
 VOLUMES="--volume=$XSOCK:$XSOCK:rw
-         --volume=$XAUTH:$XAUTH:rw
+         --volume=$XAUTH:$DOCKER_XAUTH:rw
          --volume=$SHARED_HOST_DIR:$SHARED_DOCKER_DIR:rw
-         --volume=$HOST_CONFIG:$DOCKER_CONFIG:rw
          --volume=$FONTS:$FONTS:rw" # 字体问题
+
+        #  --volume=$HOST_CONFIG:$DOCKER_CONFIG:rw
 
 if [ "$BASE_ONLY" == "true" ]; then
     SUFFIX=$SUFFIX"-base"
@@ -161,14 +169,13 @@ fi
 mkdir -p $SHARED_HOST_DIR
 
 #IMAGE=$IMAGE_NAME:$TAG_PREFIX-$ROS_DISTRO$SUFFIX
-#IMAGE="pm-autopilot:2.0.1"
-IMAGE="192.168.2.100:8086/pm-autopilot/pm-autopilot-dev:2.0.1"
+IMAGE=registry.cn-hangzhou.aliyuncs.com/cudagl/ros2:galactic
 
 echo "Launching $IMAGE"
 
 # docker run \
 #    -it --rm \
-#    --name="pm-autopilot" \
+#    --name="ros-galactic" \
 #    $VOLUMES \
 #    --env="XAUTHORITY=${XAUTH}" \
 #    --env="DISPLAY=${DISPLAY}" \
@@ -180,7 +187,7 @@ echo "Launching $IMAGE"
 
 docker run \
     -it --rm \
-    --name="pm-autopilot-dev" \
+    --name="ros-galactic" \
     $VOLUMES \
     --env="XAUTHORITY=${XAUTH}" \
     --env="DISPLAY=${DISPLAY}" \
