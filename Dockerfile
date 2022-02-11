@@ -123,5 +123,9 @@ RUN  gdown https://drive.google.com/u/0/uc?id=1eNh3F3xCQ4AMJEHtwb1dhshSyzWMjoc8 
 
 USER docker
 WORKDIR /home/docker
+
+RUN source /opt/ros/galactic/setup.bash \
+  && rosdep update 
+
 COPY .bash_aliases  .bash_aliases
 CMD /bin/bash
