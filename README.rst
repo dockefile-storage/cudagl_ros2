@@ -11,6 +11,6 @@
 
 .. code-block:: sh
 
-    docker rmi   cudagl:ros-galactic
+    docker rmi   cudagl:autowareArchitectureProposal_local
 
-    docker build -t cudagl:ros-galactic .
+    docker build -t cudagl:autowareArchitectureProposal_local .

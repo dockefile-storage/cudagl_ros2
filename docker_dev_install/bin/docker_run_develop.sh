@@ -168,7 +168,9 @@ fi
 mkdir -p $SHARED_HOST_DIR
 
 #IMAGE=$IMAGE_NAME:$TAG_PREFIX-$ROS_DISTRO$SUFFIX
-IMAGE=registry.cn-hangzhou.aliyuncs.com/cudagl/ros2:galactic
+# IMAGE=registry.cn-hangzhou.aliyuncs.com/cudagl/ros2:galactic
+# IMAGE=cudagl:autowareArchitectureProposal_local
+IMAGE=cudagl:autowareArchitectureProposal_local_base
 
 echo "Launching $IMAGE"
 

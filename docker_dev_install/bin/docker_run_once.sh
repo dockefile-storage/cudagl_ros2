@@ -142,6 +142,7 @@ VOLUMES="--volume=$XSOCK:$XSOCK:rw
          --volume=$SHARED_HOST_DIR:$SHARED_DOCKER_DIR:rw
          --volume=$FONTS:$FONTS:rw" # 字体问题
 
+        #  --volume=/opt:/opt:rw
         #  --volume=$HOST_CONFIG:$DOCKER_CONFIG:rw
 
 if [ "$BASE_ONLY" == "true" ]; then
@@ -167,7 +168,8 @@ fi
 mkdir -p $SHARED_HOST_DIR
 
 #IMAGE=$IMAGE_NAME:$TAG_PREFIX-$ROS_DISTRO$SUFFIX
-IMAGE=registry.cn-hangzhou.aliyuncs.com/cudagl/ros2:galactic
+# IMAGE=registry.cn-hangzhou.aliyuncs.com/cudagl/ros2:galactic
+IMAGE=192.168.2.100:8086/pm-autopilot/cudagl:autowareArchitectureProposal_local_base
 
 echo "Launching $IMAGE"
 
@@ -183,8 +185,9 @@ echo "Launching $IMAGE"
 #    $RUNTIME \
 #    ${IMAGE}
 
+# -it --rm \
 docker run \
-    -it --rm \
+    -it  \
     --name="ros-galactic" \
     $VOLUMES \
     --env="XAUTHORITY=${XAUTH}" \
