@@ -120,7 +120,7 @@ SUFFIX=""
 RUNTIME=""
 
 
-DOCKER_HOME=/home/promote
+DOCKER_HOME=/home/docker
 
 XSOCK=/tmp/.X11-unix
 
@@ -197,7 +197,8 @@ docker run \
     --ipc=host \
     $RUNTIME \
     ${IMAGE} \
-     /bin/bash -c "/tmp/entrypoint.sh; source /home/autoware/pm-autopilot-2.0.1/devel/setup.bash; source /home/autoware/Autoware/install/setup.bash; roslaunch autopilot_gui start.launch;"
+    /bin/bash
+    # /bin/bash -c "/tmp/entrypoint.sh; source /home/autoware/pm-autopilot-2.0.1/devel/setup.bash; source /home/autoware/Autoware/install/setup.bash; roslaunch autopilot_gui start.launch;"
 
 # mkdir -p ${HOME}/.config/autoplot_cfg 
 # docker exec -u autoware -w /home/autoware -it pm-autopilot cp /home/autoware/pm-autopilot-2.0.1/src/autopilot_gui/resources/rviz/rviz.yaml  /home/autoware/.config/autoplot_cfg/rviz.yaml
