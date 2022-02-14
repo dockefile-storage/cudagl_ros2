@@ -184,9 +184,9 @@ echo "Launching $IMAGE"
 #    --net=host \
 #    $RUNTIME \
 #    ${IMAGE}
-
+    # -it --rm \
 docker run \
-    -it --rm \
+    -it \
     --name="ros-galactic" \
     $VOLUMES \
     --env="XAUTHORITY=${XAUTH}" \
